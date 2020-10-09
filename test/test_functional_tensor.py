@@ -219,7 +219,7 @@ class Tester(TransformsTester):
 
     def _test_adjust_fn(self, fn, fn_pil, fn_t, configs, tol=2.0 + 1e-10, agg_method="max"):
         script_fn = torch.jit.script(fn)
-        torch.manual_seed(15)
+#        torch.manual_seed(15)
         tensor, pil_img = self._create_data(26, 34, device=self.device)
 
         for dt in [None, torch.float32, torch.float64]:

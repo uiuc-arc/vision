@@ -11,9 +11,10 @@ import random
 
 
 def set_rng_seed(seed):
-    torch.manual_seed(seed)
-    random.seed(seed)
-    np.random.seed(seed)
+     pass
+#    torch.manual_seed(seed)
+#    random.seed(seed)
+#    np.random.seed(seed)
 
 
 def get_available_classification_models():
@@ -102,7 +103,7 @@ class ModelTester(TestCase):
         return super(ModelTester, self).checkModule(model, args, unwrapper=unwrapper, skip=False)
 
     def _test_classification_model(self, name, input_shape, dev):
-        set_rng_seed(0)
+#        set_rng_seed(0)
         # passing num_class equal to a number other than 1000 helps in making the test
         # more enforcing in nature
         model = models.__dict__[name](num_classes=50)
@@ -140,7 +141,7 @@ class ModelTester(TestCase):
                 self.assertEqual(tuple(out["out"].shape), (1, 50, 300, 300))
 
     def _test_detection_model(self, name, dev):
-        set_rng_seed(0)
+#        set_rng_seed(0)
         model = models.detection.__dict__[name](num_classes=50, pretrained_backbone=False)
         model.eval().to(device=dev)
         input_shape = (3, 300, 300)
@@ -206,7 +207,7 @@ class ModelTester(TestCase):
                     check_out(out)
 
     def _test_detection_model_validation(self, name):
-        set_rng_seed(0)
+#        set_rng_seed(0)
         model = models.detection.__dict__[name](num_classes=50, pretrained_backbone=False)
         input_shape = (3, 300, 300)
         x = [torch.rand(input_shape)]

@@ -415,7 +415,7 @@ class Tester(unittest.TestCase):
     @unittest.skipIf(stats is None, 'scipy.stats not available')
     def test_random_apply(self):
         random_state = random.getstate()
-        random.seed(42)
+#        random.seed(42)
         random_apply_transform = transforms.RandomApply(
             [
                 transforms.RandomRotation((-45, 45)),
@@ -441,7 +441,7 @@ class Tester(unittest.TestCase):
     @unittest.skipIf(stats is None, 'scipy.stats not available')
     def test_random_choice(self):
         random_state = random.getstate()
-        random.seed(42)
+#        random.seed(42)
         random_choice_transform = transforms.RandomChoice(
             [
                 transforms.Resize(15),
@@ -477,7 +477,7 @@ class Tester(unittest.TestCase):
     @unittest.skipIf(stats is None, 'scipy.stats not available')
     def test_random_order(self):
         random_state = random.getstate()
-        random.seed(42)
+#        random.seed(42)
         random_order_transform = transforms.RandomOrder(
             [
                 transforms.Resize(20),
@@ -953,7 +953,7 @@ class Tester(unittest.TestCase):
     @unittest.skipIf(stats is None, 'scipy.stats not available')
     def test_random_vertical_flip(self):
         random_state = random.getstate()
-        random.seed(42)
+#        random.seed(42)
         img = transforms.ToPILImage()(torch.rand(3, 10, 10))
         vimg = img.transpose(Image.FLIP_TOP_BOTTOM)
 
@@ -985,7 +985,7 @@ class Tester(unittest.TestCase):
     @unittest.skipIf(stats is None, 'scipy.stats not available')
     def test_random_horizontal_flip(self):
         random_state = random.getstate()
-        random.seed(42)
+#        random.seed(42)
         img = transforms.ToPILImage()(torch.rand(3, 10, 10))
         himg = img.transpose(Image.FLIP_LEFT_RIGHT)
 
@@ -1021,7 +1021,7 @@ class Tester(unittest.TestCase):
             return p_value > 0.0001
 
         random_state = random.getstate()
-        random.seed(42)
+#        random.seed(42)
         for channels in [1, 3]:
             img = torch.rand(channels, 10, 10)
             mean = [img[c].mean() for c in range(channels)]
@@ -1048,7 +1048,7 @@ class Tester(unittest.TestCase):
                 transforms.functional.normalize(img, mean, std)
 
     def test_normalize_3d_tensor(self):
-        torch.manual_seed(28)
+#        torch.manual_seed(28)
         n_channels = 3
         img_size = 10
         mean = torch.rand(n_channels)
@@ -1537,7 +1537,7 @@ class Tester(unittest.TestCase):
 
         # Test Set 1: RGB -> 3 channel grayscale
         random_state = random.getstate()
-        random.seed(42)
+#        random.seed(42)
         x_shape = [2, 2, 3]
         x_np = np.random.randint(0, 256, x_shape, np.uint8)
         x_pil = Image.fromarray(x_np, mode='RGB')
@@ -1560,7 +1560,7 @@ class Tester(unittest.TestCase):
 
         # Test Set 2: grayscale -> 1 channel grayscale
         random_state = random.getstate()
-        random.seed(42)
+#        random.seed(42)
         x_shape = [2, 2, 3]
         x_np = np.random.randint(0, 256, x_shape, np.uint8)
         x_pil = Image.fromarray(x_np, mode='RGB')
@@ -1627,7 +1627,7 @@ class Tester(unittest.TestCase):
     def test_random_erasing(self):
         """Unit tests for random erasing transform"""
         for is_scripted in [False, True]:
-            torch.manual_seed(12)
+#            torch.manual_seed(12)
             img = torch.rand(3, 60, 60)
 
             # Test Set 0: invalid value

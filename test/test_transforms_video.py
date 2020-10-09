@@ -98,7 +98,7 @@ class TestVideoTransforms(unittest.TestCase):
             return p_value > 0.0001
 
         random_state = random.getstate()
-        random.seed(42)
+#        random.seed(42)
         for channels in [1, 3]:
             numFrames = random.randint(4, 128)
             height = random.randint(32, 256)
@@ -138,7 +138,7 @@ class TestVideoTransforms(unittest.TestCase):
     @unittest.skipIf(stats is None, 'scipy.stats not available')
     def test_random_horizontal_flip_video(self):
         random_state = random.getstate()
-        random.seed(42)
+#        random.seed(42)
         clip = torch.rand((3, 4, 112, 112), dtype=torch.float)
         hclip = clip.flip((-1))
 

@@ -25,8 +25,9 @@ from torchvision.ops._register_onnx_ops import _onnx_opset_version
 @unittest.skipIf(onnxruntime is None, 'ONNX Runtime unavailable')
 class ONNXExporterTester(unittest.TestCase):
     @classmethod
-    def setUpClass(cls):
-        torch.manual_seed(123)
+    def setUpClass(cls):	
+#        torch.manual_seed(123)
+        pass
 
     def run_model(self, model, inputs_list, tolerate_small_mismatch=False, do_constant_folding=True, dynamic_axes=None,
                   output_names=None, input_names=None):

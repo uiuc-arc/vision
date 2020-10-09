@@ -33,17 +33,17 @@ class Tester(TransformsTester):
         f = getattr(T, method)(**meth_kwargs)
         scripted_fn = torch.jit.script(f)
 
-        # set seed to reproduce the same transformation for tensor and PIL image
-        torch.manual_seed(12)
+#        # set seed to reproduce the same transformation for tensor and PIL image
+#        torch.manual_seed(12)
         transformed_tensor = f(tensor)
-        torch.manual_seed(12)
+#        torch.manual_seed(12)
         transformed_pil_img = f(pil_img)
         if test_exact_match:
             self.compareTensorToPIL(transformed_tensor, transformed_pil_img, **match_kwargs)
         else:
             self.approxEqualTensorToPIL(transformed_tensor.float(), transformed_pil_img, **match_kwargs)
 
-        torch.manual_seed(12)
+#        torch.manual_seed(12)
         transformed_tensor_script = scripted_fn(tensor)
         self.assertTrue(transformed_tensor.equal(transformed_tensor_script))
 
@@ -264,9 +264,9 @@ class Tester(TransformsTester):
                         )
                         s_transform = torch.jit.script(transform)
 
-                        torch.manual_seed(12)
+#                        torch.manual_seed(12)
                         out1 = transform(tensor)
-                        torch.manual_seed(12)
+#                        torch.manual_seed(12)
                         out2 = s_transform(tensor)
                         self.assertTrue(out1.equal(out2))
 
@@ -284,9 +284,9 @@ class Tester(TransformsTester):
                             )
                             s_transform = torch.jit.script(transform)
 
-                            torch.manual_seed(12)
+#                            torch.manual_seed(12)
                             out1 = transform(tensor)
-                            torch.manual_seed(12)
+#                            torch.manual_seed(12)
                             out2 = s_transform(tensor)
                             self.assertTrue(out1.equal(out2))
 
@@ -302,9 +302,9 @@ class Tester(TransformsTester):
                         )
                         s_transform = torch.jit.script(transform)
 
-                        torch.manual_seed(12)
+#                        torch.manual_seed(12)
                         out1 = transform(tensor)
-                        torch.manual_seed(12)
+#                        torch.manual_seed(12)
                         out2 = s_transform(tensor)
                         self.assertTrue(out1.equal(out2))
 
@@ -319,9 +319,9 @@ class Tester(TransformsTester):
                 )
                 s_transform = torch.jit.script(transform)
 
-                torch.manual_seed(12)
+#                torch.manual_seed(12)
                 out1 = transform(tensor)
-                torch.manual_seed(12)
+#                torch.manual_seed(12)
                 out2 = s_transform(tensor)
                 self.assertTrue(out1.equal(out2))
 
